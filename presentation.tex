@@ -180,7 +180,7 @@
         y(t_{j + 1}) = y(t_j) + f_\theta(t, y_j)
     \end{equation}
 \end{frame}
-\subsection{Direct Comparison}
+\subsection{Comparison}
 
 \setlength{\columnsep}{0cm}
 
@@ -224,7 +224,7 @@
 
 \section{VIN}
 
-\subsection{Into Physically Structured Embeddings}
+\subsection{Physically Structured Embeddings}
 
 \begin{frame}
     \frametitle{Variational Integrator Networks\footcite{saemundssonVariationalIntegratorNetworks2020}}
@@ -242,6 +242,34 @@
 
 \end{frame}
 
+\subsection{Variational Mechanics}
+
+\begin{frame}
+    \frametitle{Variational Integrator Networks}
+    \framesubtitle{Why integrators are variational?\footcite{matthewwestVariationalIntegrators2004}}
+
+    \small
+    \begin{block}{ \small Principle of Least Action}
+        \begin{equation}
+            S(\mathbf{q}) = \int_{0}^{T}L(\mathbf{q}(t), \dot{\mathbf{q}}(t))\mathrm{d}t
+        \end{equation}
+    \end{block}
+
+    \begin{block}{\small Euler-Lagrange Equations}
+        \begin{equation}
+            \frac{\mathrm{d}}{\mathrm{d}t}\pdv{L}{\dot{\mathbf{q}}} - \pdv{L}{\mathbf{q}} = 0
+        \end{equation}
+    \end{block}
+
+    \begin{block}{\small Discrete Euler-Lagrange in Momentum Form}
+        \begin{align}
+            \mathbf{p}_k       & = -D_1L_d(\mathbf{q}_k, \mathbf{q}_{k+1}, \Delta t) \\
+            \mathbf{p}_{k + 1} & = D_2L_d(\mathbf{q}_k, \mathbf{q}_{k+1}, \Delta t)
+        \end{align}
+    \end{block}
+
+\end{frame}
+
 \subsection{VIN Structure}
 
 \begin{frame}
@@ -254,6 +282,63 @@
     consider it to be a multilayered (discretised) dynamics of the system.
     \((\mathbf{q}, \mathbf{p})\) is the hidden space, which is 2-form of
     position-momentum phase-space and \(f_\theta\) we have seen earlier.
+
+\end{frame}
+
+\subsection{Benefits}
+
+\begin{frame}
+    \frametitle{Variational Integrator Network}
+    \framesubtitle{Benefits}
+
+    \begin{enumerate}
+        \item Physical properties conservation automatically enforced by underlying structure
+
+              \item{Interpretability
+                          is increased.
+
+                          Embedding evolves in the phase-space, which has notions of kinetic and
+                          potential energy. }
+        \item Complex phenomena modelling is allowed due to the black-box nature of
+              potential.
+    \end{enumerate}
+
+\end{frame}
+
+\subsection{VIN-VAE}
+
+\begin{frame}
+    \frametitle{Variational Integrator Networks}
+    \framesubtitle{VIN-VAE}
+    Case study: \textit{Ideal pendulum}. Noisy observations. Image data.
+
+    \includegraphics[width=15cm]{assets/vin-vae.png}
+
+    What if we will consider VIN in terms of VAE\@?
+
+\end{frame}
+
+\subsection{Comparison}
+
+\begin{frame}
+    \frametitle{Variational Integrator Networks}
+    \framesubtitle{Case Study}
+
+    \begin{multicols}{2}
+        \includegraphics[width=7cm]{assets/rnn-vin.png}
+
+        Let's infer and evolve the embeddings of ResRNN and VIN\@. The main question is
+        the preservation of evolution patterns.
+    \end{multicols}
+
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}
+    \frametitle{Conclusion}
+    \centering
+    \LARGE{Conclusion \& Questions}
 
 \end{frame}
 
